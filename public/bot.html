@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="css/botchat.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="bot"/>
+    <script src="js/botchat.js"></script>
+    <script>
+      var query = window.location.search.substring(1).split('&')
+      var userid = query[1].split('=')[1]
+      var username = query[0].split('=')[1]
+
+      var botConnection = new BotChat.DirectLine( {secret: "6BsQyi3SM_s.cwA.NjY.XHt689rq3j75b-bfDMRy9phtsxIeEoJ0xgs14sdSQ0Q"} );
+      BotChat.App({
+        botConnection: botConnection,
+        user: { id: userid,
+                name: username
+              },
+        bot: { id: 'b652adc9-d912-4e3a-8bb3-5a62e1d0a479' },
+        resize: 'detect'
+      }, document.getElementById("bot"));
+    </script>
+  </body>
+</html>
