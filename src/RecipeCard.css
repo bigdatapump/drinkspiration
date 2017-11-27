@@ -123,3 +123,11 @@
     -webkit-transition: color 0.1s ease;
     transition: color 0.1s ease;
   }
+
+  .similar {
+    text-align:center;
+  }
+
+  .similar-button {
+    margin: 2px
+  }
