@@ -68,7 +68,7 @@ $(document).ready(function () {
             setTimeout(function () {
                 overlayMenu.removeClass('menu-visible').css("opacity", "0").attr("aria-expanded", "false");
                 burgerMenu.removeClass('icon-cross').addClass('icon-menu');
-                burgerItems.css("color", "inherit");
+                //burgerItems.css("color", "inherit");
                 setTimeout(function () {
                     menuWrapper.removeClass('is-visible').css("display", "none");
                 }, 1200);
