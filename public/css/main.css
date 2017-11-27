@@ -497,7 +497,9 @@ img.centered-padding {
   color: #07080a;
   float:right;
   padding-top: 16px;
+  padding-right:16px;
   background: transparent;
+  font-size: 4vw;
 
 }
 
@@ -528,7 +530,7 @@ img.centered-padding {
 }
 .burger-menu {
   float: left;
-  font-size: 1.6em;
+  font-size: 7vw;
   padding-top: 16px;
   padding-left: 16px;
   color: #07080a;
