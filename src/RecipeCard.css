@@ -125,7 +125,7 @@
   }
 
   .similar {
-    text-align:center;
+    display: inline
   }
 
   .similar-button {
