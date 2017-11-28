@@ -6,9 +6,12 @@ import content from './recipes.json';
 
 const buttonNames = ['english','vodka','medium-strength','pink','classic','american','modern-classic','fresh','lime','sour','light','strong','citrus','gin','rum','sweet','fruity','trendy','bubbly','summer','sweet-sour'];
 
+
 class App extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+
+    console.log(this.props.user)
 
     this.state = {
       selectedTags: []

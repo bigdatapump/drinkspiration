@@ -1,0 +1,9 @@
+.rating-button {
+    display: inline;
+    margin: 2px;
+}
+
+.rating-button.is-clicked {
+    background-color: #07080a;
+    color: #fff;
+}
