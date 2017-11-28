@@ -57,7 +57,7 @@ class NewsFeed extends Component {
   render() {
 
     return (
-      <div className="App">
+      <div className="NewsFeed">
         <h1>{this.state.myVal}</h1>
         <form onSubmit={this.handleSubmit.bind(this)}>
         <label>
@@ -69,11 +69,11 @@ class NewsFeed extends Component {
       <div>
         {this.state.messageQueue.map( x=> {
           return (<h2>{x.message}</h2>);
-        })}
+        }).reverse().slice(0, 10)}
       </div>
       </div>
     );
   }
 }
 
-export default App;
+export default NewsFeed;
