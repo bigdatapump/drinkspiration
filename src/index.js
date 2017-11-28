@@ -6,7 +6,6 @@ import registerServiceWorker from './registerServiceWorker';
 import * as firebase from 'firebase';
 
 // Initialize Firebase
-
 /*
 var config = {
     apiKey: 'AIzaSyDORY1FqIyxJUw90VqMdVRsFmPYDTicZLY',
@@ -29,19 +28,5 @@ var config = {
 
 firebase.initializeApp(config);
 
-
-fetch(document.location.origin+'/.auth/me').then(
-    (resp) => {
-        resp.json().then( (value) => {
-            let username = value[0].user_id.split('@')[0].split('.').map((x) => x.charAt(0).toUpperCase() + x.slice(1)).join(' ');
-            ReactDOM.render(<App user={username}/>, document.getElementById('root'));
-            }
-        );        
-    }
-).catch(
-    () => {
-        ReactDOM.render(<App user='user name'/>, document.getElementById('root'));
-    }
-);
-
+ReactDOM.render(<App user='user name'/>, document.getElementById('root'));
 registerServiceWorker();

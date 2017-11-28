@@ -4,6 +4,8 @@ import recipes from './recipes.json';
 import similarDrinks from './similar-drinks.json';
 import Rating from './Rating.js';
 
+
+
 class RecipeCard extends Component {
     constructor(props) {
         super(props);

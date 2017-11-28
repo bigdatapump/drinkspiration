@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import React, { Component } from 'react';
 import './Rating.css';
+import $ from 'jquery';
 
 class Rating extends Component {
     constructor(props) {
@@ -23,9 +24,10 @@ class Rating extends Component {
             const listRef = firebase.database().ref('ratings');
             const postRef = listRef.push();
             postRef.set({
-              user: 'User Name',
+              user: $('#user').text(),
               drink: this.props.drinkName,
-              vote: voteType
+              vote: voteType,
+              timestamp: firebase.database.ServerValue.TIMESTAMP
             });
         }
     }
