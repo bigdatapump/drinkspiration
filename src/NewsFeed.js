@@ -20,7 +20,7 @@ class NewsFeed extends Component {
     this.state = {
       myVal: 10,
       value: 'say something...',
-      messageQueue: []
+      ratingsQueue: []
     }
     firebase.database().ref('initialState').set(this.state);
   }
@@ -32,9 +32,9 @@ class NewsFeed extends Component {
       this.setState({myVal: snapshot.val()})
     })
 
-    const messagesRef = firebase.database().ref("messages");
-    messagesRef.on("child_added", data => {
-      this.setState({messageQueue: this.state.messageQueue.concat(data.val())});
+    const ratingsRef = firebase.database().ref("ratings");
+    ratingsRef.on("child_added", data => {
+      this.setState({ratingsQueue: this.state.ratingsQueue.concat(data.val())});
     });
   }
 
@@ -43,11 +43,12 @@ class NewsFeed extends Component {
   }
 
   handleSubmit(event) {
-    const listRef = firebase.database().ref("messages");
+    const listRef = firebase.database().ref("ratings");
     const postRef = listRef.push();
     postRef.set({
-      commenter: "me",
-      message: this.state.value
+      drink: "Gin And Tonic",
+      user: "User Name",
+      vote: "like",
     })
     event.preventDefault()
   }
@@ -67,8 +68,8 @@ class NewsFeed extends Component {
         <input type="submit" value="Submit" />
       </form>
       <div>
-        {this.state.messageQueue.map( x=> {
-          return (<h2>{x.message}</h2>);
+        {this.state.ratingsQueue.map( x=> {
+          return (<h2>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</h2>);
         }).reverse().slice(0, 10)}
       </div>
       </div>
