@@ -18,58 +18,39 @@ class NewsFeed extends Component {
   constructor() {
     super();
     this.state = {
-      myVal: 10,
-      value: 'say something...',
       ratingsQueue: []
     }
     firebase.database().ref('initialState').set(this.state);
   }
 
   componentDidMount() {
-    const rootRef = firebase.database().ref().child('myVal');
-    rootRef.on('value', snapshot => {
-      console.log(snapshot.val())
-      this.setState({myVal: snapshot.val()})
-    })
-
     const ratingsRef = firebase.database().ref("ratings");
     ratingsRef.on("child_added", data => {
       this.setState({ratingsQueue: this.state.ratingsQueue.concat(data.val())});
     });
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
-  }
-
   handleSubmit(event) {
     const listRef = firebase.database().ref("ratings");
     const postRef = listRef.push();
     postRef.set({
-      drink: "Gin And Tonic",
+      drink: "Vodka Gimlet",
       user: "User Name",
       vote: "like",
     })
     event.preventDefault()
   }
 
-
-
   render() {
 
     return (
-      <div className="NewsFeed">
-        <h1>{this.state.myVal}</h1>
+      <div className="newsfeed">
         <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />
-        </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Vote" />
       </form>
       <div>
         {this.state.ratingsQueue.map( x=> {
-          return (<h2>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</h2>);
+          return (<h3>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</h3>);
         }).reverse().slice(0, 10)}
       </div>
       </div>
