@@ -492,6 +492,17 @@ img.centered-padding {
 }
 /* Navbar
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.user-name {
+
+  color: #07080a;
+  float:right;
+  padding-top: 16px;
+  padding-right:16px;
+  background: transparent;
+  font-size: 4vw;
+
+}
+
 .navbar-burger {
   background-color: #D8EDE4;
   border-color: #eee;
@@ -518,8 +529,10 @@ img.centered-padding {
   color: #727374;
 }
 .burger-menu {
-  float: right;
-  padding: 16px;
+  float: left;
+  font-size: 7vw;
+  padding-top: 16px;
+  padding-left: 16px;
   color: #07080a;
   cursor: pointer;
   background: transparent;
