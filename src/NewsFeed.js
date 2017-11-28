@@ -45,12 +45,21 @@ class NewsFeed extends Component {
 
     return (
       <div className="newsfeed">
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <h4>News</h4>
+        {/*<form onSubmit={this.handleSubmit.bind(this)}>
         <input type="submit" value="Vote" />
-      </form>
+      </form>*/}
       <div>
+
         {this.state.ratingsQueue.map( x=> {
-          return (<h3>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</h3>);
+          return (
+            <div>
+            <div className='panel'>
+            <span>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</span>
+            <div style={{margin:'1px'}}><span style={{fontSize: "0.6em"}}>4 min ago</span></div>
+            </div>
+            </div>
+          );
         }).reverse().slice(0, 10)}
       </div>
       </div>
