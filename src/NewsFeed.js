@@ -3,12 +3,12 @@ import './NewsFeed.css';
 import * as firebase from 'firebase';
 
 var config = {
-    apiKey: "AIzaSyDz34nFHd2Z8weGVlY9izRzbSIcWvoInS8",
-    authDomain: "drinking-buddy-1acb2.firebaseapp.com",
-    databaseURL: "https://drinking-buddy-1acb2.firebaseio.com",
-    projectId: "drinking-buddy-1acb2",
-    storageBucket: "drinking-buddy-1acb2.appspot.com",
-    messagingSenderId: "894370662410"
+    apiKey: 'AIzaSyDz34nFHd2Z8weGVlY9izRzbSIcWvoInS8',
+    authDomain: 'drinking-buddy-1acb2.firebaseapp.com',
+    databaseURL: 'https://drinking-buddy-1acb2.firebaseio.com',
+    projectId: 'drinking-buddy-1acb2',
+    storageBucket: 'drinking-buddy-1acb2.appspot.com',
+    messagingSenderId: '894370662410'
   };
 
 firebase.initializeApp(config);
@@ -18,7 +18,7 @@ function getMsgTimeSince(timestamp) {
 
     var now = Date.now();
 
-    if (!(typeof(timestamp) === "number" && timestamp > 0 && timestamp <= now)) {
+    if (!(typeof(timestamp) === 'number' && timestamp > 0 && timestamp <= now)) {
       return '';
     }
 
@@ -60,37 +60,22 @@ class NewsFeed extends Component {
     super();
     this.state = {
       ratingsQueue: []
-    }
+    };
     firebase.database().ref('initialState').set(this.state);
   }
 
   componentDidMount() {
-    const ratingsRef = firebase.database().ref("ratings");
-    ratingsRef.on("child_added", data => {
+    const ratingsRef = firebase.database().ref('ratings');
+    ratingsRef.on('child_added', data => {
       this.setState({ratingsQueue: this.state.ratingsQueue.concat(data.val())});
     });
-  }
-
-  handleSubmit(event) {
-    const listRef = firebase.database().ref("ratings");
-    const postRef = listRef.push();
-    postRef.set({
-      drink: "Vodka Gimlet",
-      user: "User Name",
-      vote: "like",
-      timestamp: Date.now()
-    })
-    event.preventDefault()
   }
 
   render() {
 
     return (
-      <div className="newsfeed">
+      <div className='newsfeed'>
         <h4>News</h4>
-        {/*<form onSubmit={this.handleSubmit.bind(this)}>
-        <input type="submit" value="Vote" />
-      </form>*/}
       <div>
 
         {this.state.ratingsQueue.map( x=> {
@@ -98,7 +83,7 @@ class NewsFeed extends Component {
             <div>
             <div className='panel'>
             <span>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</span>
-            <div style={{margin:'1px'}}><span style={{fontSize: "0.6em"}}><i className="icon icon-back-in-time"/>  {getMsgTimeSince(x.timestamp)}</span></div>
+            <div style={{margin:'1px'}}><span style={{fontSize: '0.6em'}}><i className='icon icon-back-in-time'/>  {getMsgTimeSince(x.timestamp)}</span></div>
             </div>
             </div>
           );
