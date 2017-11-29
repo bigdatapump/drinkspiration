@@ -98,7 +98,7 @@ class NewsFeed extends Component {
             <div>
             <div className='panel'>
             <span>{x.user} {x.vote === 'like' ? 'likes' : 'dislikes'} {x.drink}</span>
-            <div style={{margin:'1px'}}><span style={{fontSize: "0.6em"}}>4 min ago</span></div>
+            <div style={{margin:'1px'}}><span style={{fontSize: "0.6em"}}><i className="icon icon-back-in-time"/>  {getMsgTimeSince(x.timestamp)}</span></div>
             </div>
             </div>
           );
